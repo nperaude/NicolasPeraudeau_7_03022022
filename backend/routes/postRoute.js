@@ -3,19 +3,20 @@ const router = express.Router();
 
 const postController = require("../controllers/postController");
 const multer = require("../middleware/multer-configPost");
+const auth = require("../middleware/auth");
 
-router.post("/", multer, postController.createPost);
+router.post("/", auth, multer, postController.createPost);
 
-router.get("/", postController.getAllPost);
+router.get("/", auth, postController.getAllPost);
 
-router.post("/userPost", postController.userPost);
+router.post("/userPost", auth, postController.userPost);
 
-router.post("/postUserLike", postController.postUserLike);
+router.post("/postUserLike", auth, postController.postUserLike);
 
-router.post("/deletePost", postController.deletePost);
+router.post("/deletePost", auth, postController.deletePost);
 
-router.patch("/", postController.likeUnlikePost);
+router.patch("/", auth, postController.likeUnlikePost);
 
-router.post("/getLike", postController.getLike);
+router.post("/getLike", auth, postController.getLike);
 
 module.exports = router;

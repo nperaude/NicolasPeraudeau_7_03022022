@@ -24,7 +24,9 @@ if (!itemstr) {
   } else {
     try {
       user = JSON.parse(itemstr);
-      instance.defaults.headers.common["Authorization"] = user.token;
+      instance.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${user.token}`;
     } catch (ex) {
       user = {
         userId: -1,
@@ -104,7 +106,9 @@ const store = createStore({
     },
 
     logUser: function (state, user) {
-      //instance.default.headers.common["Authorization"] = user.token;
+      instance.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${user.token}`;
       const now = new Date();
 
       const item = {
