@@ -101,7 +101,12 @@ export default {
     };
   },
 
-  mounted: function () {},
+  mounted: function () {
+    if (this.$store.state.user.userId != -1) {
+      this.$router.push("/home");
+      return;
+    }
+  },
 
   computed: {
     validatedFields: function () {
